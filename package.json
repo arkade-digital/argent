@@ -1,0 +1,29 @@
+{
+  "name": "@arkade/argent",
+  "version": "1.0.0",
+  "description": "Javascript library for converting and formatting currency amounts",
+  "repository": "https://github.com/arkade-digital/argent",
+  "license": "MIT",
+  "main": "dist/argent.js",
+  "module": "dist/argent.esm.js",
+  "dependencies": {
+    "numeral": "^2.0.6",
+    "store": "^2.0.12",
+    "url-search-params-polyfill": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "rollup": "^0.66.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-babel-minify": "^6.0.0",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0"
+  },
+  "scripts": {
+    "build-es": "rollup -c rollup.config.esm.js",
+    "build-umd": "rollup -c rollup.config.umd.js",
+    "build-umd-min": "rollup -c rollup.config.umd-min.js",
+    "build": "yarn build-es && yarn build-umd && yarn build-umd-min"
+  }
+}
