@@ -1,6 +1,6 @@
 {
   "name": "@arkade/argent",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Javascript library for converting and formatting currency amounts",
   "repository": "https://github.com/arkade-digital/argent",
   "license": "MIT",
