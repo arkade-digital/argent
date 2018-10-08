@@ -82,6 +82,9 @@ function () {
    * options.convertedFormat
    *   Numeral format string for amounts in converted currency
    *
+   * options.hideCodeForBase
+   *   Hide currency code (e.g. AUD) suffix for the base currency
+   *
    * @param  {Object}  options
    */
   function Argent(options) {
@@ -94,6 +97,7 @@ function () {
     }
 
     this.baseCurrency = options.baseCurrency;
+    this.hideCodeForBase = options.hideCodeForBase;
 
     if (!this.baseCurrency) {
       throw new Error("You must set baseCurrency when instantiating Argent");
@@ -232,7 +236,9 @@ function () {
         formattedAmount = format.symbol + formattedAmount;
       }
 
-      if (currency !== this.baseCurrency) {
+      if (this.hideCodeForBase && currency == this.baseCurrency) {
+        formattedAmount = "".concat(formattedAmount);
+      } else {
         formattedAmount = "".concat(formattedAmount, " ").concat(format.code);
       }
 

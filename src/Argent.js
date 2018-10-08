@@ -24,6 +24,9 @@ export default class Argent {
    * options.convertedFormat
    *   Numeral format string for amounts in converted currency
    *
+   * options.hideCodeForBase
+   *   Hide currency code (e.g. AUD) suffix for the base currency
+   *
    * @param  {Object}  options
    */
   constructor(options) {
@@ -34,6 +37,8 @@ export default class Argent {
     }
 
     this.baseCurrency = options.baseCurrency;
+
+    this.hideCodeForBase = options.hideCodeForBase;
 
     if (!this.baseCurrency) {
       throw new Error("You must set baseCurrency when instantiating Argent");
@@ -162,7 +167,9 @@ export default class Argent {
       formattedAmount = format.symbol + formattedAmount;
     }
 
-    if (currency !== this.baseCurrency) {
+    if (this.hideCodeForBase && currency == this.baseCurrency) {
+      formattedAmount = `${formattedAmount}`;
+    } else {
       formattedAmount = `${formattedAmount} ${format.code}`;
     }
 
