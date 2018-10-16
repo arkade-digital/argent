@@ -290,7 +290,7 @@ export default class Argent {
       );
     }
 
-    for (var i = 0; i < nodes.length; ++i) {
+    for (var i = 0; i < nodes.length; i++) {
       nodes[i].addEventListener("change", event =>
         this.setCurrency(event.target.value)
       );

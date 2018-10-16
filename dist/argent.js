@@ -2913,7 +2913,7 @@
           throw new Error("Node with selector \"".concat(selector, "\" not found, could not register currency selector"));
         }
 
-        for (var i = 0; i < nodes.length; ++i) {
+        for (var i = 0; i < nodes.length; i++) {
           nodes[i].addEventListener("change", function (event) {
             return _this2.setCurrency(event.target.value);
           });
