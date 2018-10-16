@@ -282,19 +282,20 @@ export default class Argent {
    * @return {Argent}
    */
   registerCurrencySelector(selector) {
-    const node = document.querySelector(selector);
+    const nodes = document.querySelectorAll(selector);
 
-    if (!node) {
+    if (!nodes) {
       throw new Error(
         `Node with selector "${selector}" not found, could not register currency selector`
       );
     }
 
-    node.addEventListener("change", event =>
-      this.setCurrency(event.target.value)
-    );
-
-    node.value = this.currency;
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].addEventListener("change", event =>
+        this.setCurrency(event.target.value)
+      );
+      nodes[i].value = this.currency;
+    }
 
     return this;
   }
