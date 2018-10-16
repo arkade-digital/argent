@@ -341,16 +341,19 @@ function () {
     value: function registerCurrencySelector(selector) {
       var _this2 = this;
 
-      var node = document.querySelector(selector);
+      var nodes = document.querySelectorAll(selector);
 
-      if (!node) {
+      if (!nodes) {
         throw new Error("Node with selector \"".concat(selector, "\" not found, could not register currency selector"));
       }
 
-      node.addEventListener("change", function (event) {
-        return _this2.setCurrency(event.target.value);
-      });
-      node.value = this.currency;
+      for (var i = 0; i < nodes.length; ++i) {
+        nodes[i].addEventListener("change", function (event) {
+          return _this2.setCurrency(event.target.value);
+        });
+        nodes[i].value = this.currency;
+      }
+
       return this;
     }
   }]);
